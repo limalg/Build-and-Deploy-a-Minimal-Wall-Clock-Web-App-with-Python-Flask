@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Wall Clock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="clock">
+        <!-- Clock hands -->
+        <div id="hour" class="hand"></div>
+        <div id="minute" class="hand"></div>
+        <div id="second" class="hand"></div>
+
+        <!-- Center dot -->
+        <div class="center-dot"></div>
+    </div>
+
+    <script>
+        // Update clock hands every second
+        function updateClock() {
+            const now = new Date();
+            const hour = now.getHours();
+            const minute = now.getMinutes();
+            const second = now.getSeconds();
+
+            document.getElementById('hour').style.transform = `rotate(${(hour % 12) * 30 + minute * 0.5}deg)`;
+            document.getElementById('minute').style.transform = `rotate(${minute * 6}deg)`;
+            document.getElementById('second').style.transform = `rotate(${second * 6}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Show clock immediately on page load
+    </script>
+</body>
+</html>
