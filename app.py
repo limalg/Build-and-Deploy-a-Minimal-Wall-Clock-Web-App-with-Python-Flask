@@ -10,11 +10,11 @@ def index():
     if request.method == 'POST':
         # Define containers and their volumes in liters
         containers = [
+            ("Lata 269ml", 0.269, request.form.get('price_269')),
             ("Lata 350ml", 0.350, request.form.get('price_350')),
             ("Latão 473ml", 0.473, request.form.get('price_473')),
             ("Garrafa 600ml", 0.600, request.form.get('price_600')),
             ("Garrafa 330ml", 0.330, request.form.get('price_330')),
-            ("Lata 269ml", 0.269, request.form.get('price_269')),
         ]
 
         for name, liters, price_str in containers:
