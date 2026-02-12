@@ -15,6 +15,8 @@ def index():
             ("Latão 473ml", 0.473, request.form.get('price_473')),
             ("Garrafa 600ml", 0.600, request.form.get('price_600')),
             ("Garrafa 330ml", 0.330, request.form.get('price_330')),
+            ("Garrafa 300ml", 0.300, request.form.get('price_300')),
+            ("Garrafa 1000ml", 1.000, request.form.get('price_1000')),
         ]
 
         for name, liters, price_str in containers:
