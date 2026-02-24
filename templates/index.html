@@ -2,87 +2,132 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora de Cerveja — Custo por Litro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas Show</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div id="datetime" class="datetime"><i class="fas fa-clock"></i> carregando...</div>
+
     <div class="container">
-        <div id="datetime" class="datetime" aria-live="polite"></div>
-        <h1>Calculadora de Cerveja — Melhor Custo Benefício</h1>
 
-        <form method="post" class="form">
-            <label>Lata 269ml: R$ <input type="text" name="price_269" placeholder="ex: 3.50"></label>
-            <label>Lata 350ml: R$ <input type="text" name="price_350" placeholder="ex: 4.50"></label>
-            <label>Latão 473ml: R$ <input type="text" name="price_473" placeholder="ex: 6.00"></label>
-            <label>Garrafa 300ml: R$ <input type="text" name="price_300" placeholder="ex: 4.00"></label>
-            <label>Garrafa 330ml: R$ <input type="text" name="price_330" placeholder="ex: 5.00"></label>
-            <label>Garrafa 600ml: R$ <input type="text" name="price_600" placeholder="ex: 8.50"></label>
-            <label>Garrafa 1000ml: R$ <input type="text" name="price_1000" placeholder="ex: 12.50"></label>
-            
-
-            <div class="actions">
-                <button type="submit">Calcular</button>
-                <button type="reset">Limpar</button>
+        <!-- HERO -->
+        <div class="hero animate">
+            <div class="logo-wrap">
+                <img src="{{ url_for('static', filename='ml.png') }}" alt="Ofertas Show" class="logo-img">
+                <div>
+                    <div class="logo-text">Ofertas Show</div>
+                    <div class="tagline">Junto com você s2</div>
+                </div>
             </div>
-        </form>
+        </div>
 
-        {% if results %}
-        <section class="results">
-            <h2>Resultados</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Opção</th>
-                        <th>Volume (L)</th>
-                        <th>Preço (R$)</th>
-                        <th>Preço por litro (R$/L)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for r in results %}
-                    <tr {% if loop.first %}class="best"{% endif %}>
-                        <td>{{ r.name }}</td>
-                        <td>{{ '%.3f' % r.liters }}</td>
-                        <td>{{ '%.2f' % r.price }}</td>
-                        <td>{{ '%.2f' % r.price_per_liter }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <!-- CALCULADORA DE CERVEJA -->
+        <!-- <div class="card animate delay-05">
+            <p class="section-label"><i class="fas fa-calculator"></i> Ferramenta Útil</p>
+            <div class="card-title">Calculadora de Cerveja</div>
+            <p class="card-desc">Descubra qual embalagem de cerveja oferece o melhor custo-benefício por litro. Compare preços facilmente!</p>
+            <a href="/cerveja" class="btn btn-primary">
+                <i class="fas fa-beer"></i> Calcular Agora
+            </a>
+        </div> -->
 
-            <p class="advice">Melhor custo-benefício: <strong>{{ best.name }}</strong> — {{ '%.2f' % best.price_per_liter }} R$/L</p>
-        </section>
-        {% else %}
-        <p class="hint">Insira os preços e clique em "Calcular" para comparar.</p>
-        {% endif %}
+        <!-- GRUPOS VIP -->
+        <div class="card animate delay-1">
+            <p class="section-label"><i class="fas fa-star"></i> Grupos VIP</p>
+            <div class="card-title">Cupons & Ofertas Exclusivas</div>
+            <p class="card-desc">Entre nos nossos grupos e comece a economizar de verdade. Cupons diários, promoções relâmpago e muito mais!</p>
+            <div class="btn-group">
+                <a href="https://chat.whatsapp.com/FKAF6A7IIPB9ohww3n4YLY" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Entrar no WhatsApp
+                </a>
+                <a href="https://t.me/ofertasshow" class="btn btn-telegram">
+                    <i class="fab fa-telegram"></i> Entrar no Telegram
+                </a>
+            </div>
+        </div>
+
+        <!-- PRODUTOS -->
+        <div class="card animate delay-2">
+            <p class="section-label"><i class="fas fa-box-open"></i> Produtos em Destaque</p>
+            <div class="card-title">Lista de Produtos</div>
+            <p class="card-desc">Está na rede, ao seu alcance aqui! ✨</p>
+            <div class="products-grid" style="margin-bottom:16px">
+                <a href="https://mercadolivre.com/sec/2CBNEPe" class="product-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Celulares, Eletrônicos, Eletrodomésticos, Roupas e mais</span>
+                </a>
+                <a href="https://meli.la/2k8J9iP" class="product-card">
+                    <i class="fas fa-spray-can"></i>
+                    <span>Cosméticos, Perfumes, Maquiagem e Cuidados Pessoais</span>
+                </a>
+            </div>
+            <div class="divider">• ── ✾ ── •</div>
+            <div class="btn-group" style="margin-top:16px">
+                <a href="https://meli.la/1CnEkmn" class="btn btn-shopee">
+                    <i class="fas fa-heart"></i> Seguir na Shopee
+                </a>
+                <a href="https://meli.la/1CnEkmn" class="btn btn-ml">
+                    <i class="fas fa-handshake"></i> Seguir no Mercado Livre
+                </a>
+            </div>
+        </div>
+
+        <!-- REDES SOCIAIS -->
+        <div class="card animate delay-3">
+            <p class="section-label"><i class="fas fa-share-nodes"></i> Redes Sociais</p>
+            <div class="card-title" style="margin-bottom: 22px">Siga-nos</div>
+            <div class="social-grid">
+                <!-- <a href="#" class="social-btn tiktok" title="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a> -->
+                <a href="https://www.instagram.com/ofertasshow10/" class="social-btn instagram" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="/cerveja" class="social-btn calculator" title="Calculadora de Cerveja">
+                    <i class="fab fa-calculator"></i>
+                    <span>Cal. de Cerveja</span>
+                </a>
+
+                <a href="https://www.facebook.com/profile.php?id=61568965972879" class="social-btn facebook" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="social-btn pinterest" title="Pinterest">
+                    <i class="fab fa-pinterest"></i>
+                    <span>Pinterest</span>
+                </a>
+                <a href="mailto:limalg2022@gmail.com" class="social-btn email" title="Email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </div>
+
+        <footer class="animate delay-4">&copy; 2025 Ofertas Show! — Junto com você s2 🧡</footer>
+
     </div>
+
     <script>
-        // Mostrar data e hora de São Paulo no canto superior direito
         (function(){
-            const TIMEZONE = 'America/Sao_Paulo';
             const el = document.getElementById('datetime');
-            function updateDateTime(){
+            function update(){
                 const now = new Date();
-                const opts = {
-                    timeZone: TIMEZONE,
-                    weekday: 'short',
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit',
-                    hour12: false
-                };
-                const fmt = new Intl.DateTimeFormat('pt-BR', opts);
-                el.textContent = fmt.format(now);
+                el.innerHTML = '<i class="fas fa-clock"></i> ' + new Intl.DateTimeFormat('pt-BR', {
+                    timeZone: 'America/Sao_Paulo',
+                    weekday: 'short', day: '2-digit', month: 'short',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+                }).format(now);
             }
-            if (el) {
-                updateDateTime();
-                setInterval(updateDateTime, 1000);
-            }
+            update();
+            setInterval(update, 1000);
         })();
     </script>
+
 </body>
 </html>
